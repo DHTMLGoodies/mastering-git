@@ -1,1 +1,65 @@
 # Mastering GIT
+
+The best way to learn git is to use the command line. Use ui tools
+later once you mastered the basics.
+
+## The four areas
+
+1. The working area - file system for your project
+2. The index 
+3. The repository - the .git folder
+4. The stash
+
+### The two questions
+
+1. How does a specific git command move information acrosse the
+four areas?
+2. How does this command change the repository?
+
+### The repository
+
+Stored in .git
+
+Contains blobs (files), trees (folders) and commits. 
+
+These are 
+- immutable, they can be deleted but never changed. 
+- linked together
+
+Commits
+- is a snapshot
+- each commit points to a parent commit(s)
+- a branch points to a commit
+
+HEAD
+- can only be one HEAD
+- HEAD is pointing to a branch
+
+
+## The index
+
+- unique to Git
+- between the working area and the repository
+- also called the staging area
+- stage to staging area and commit to repository
+- data stored in .git/index (binary)
+
+```
+git status
+nothing to commit, working tree clean
+```
+
+means that the file system, index and repository
+are the same.
+
+```
+git diff
+```
+
+compares the working area with the index
+
+```
+git diff --cached
+````
+
+compares the index with the repository
