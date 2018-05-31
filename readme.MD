@@ -56,10 +56,10 @@ are the same.
 git diff
 ```
 
-compares the working area with the index
+compares the working area with the index.
 
 ```
 git diff --cached
 ````
 
-compares the index with the repository
+compares the index with the repository.
