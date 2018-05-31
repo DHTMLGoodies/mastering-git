@@ -63,3 +63,14 @@ git diff --cached
 ````
 
 compares the index with the repository.
+
+
+## Moving data to the right
+
+Working Area -> Index -> Repository
+
+1) Make changes to file "menu.txt"
+2) git add "menu.txt" to move it to the index
+3) git commit -m "Updated menu" to move it from index to repository
+
+## Moving data to the left
