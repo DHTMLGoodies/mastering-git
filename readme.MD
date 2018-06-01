@@ -300,6 +300,7 @@ SUMMARY: Moving files between the areas
 
 1. ```git add <file>``` : working area to index.
 2. ```git checkout <file>``` index to working area.
+3. ```git checkout HEAD <file>```repository to index and working area
 3. ```git commit``` : index to repository
 4. ```git reset HEAD <file>``` : repository to index. file is optional
 5. ```git reset --hard HEAD```: from repository to index and working area.
