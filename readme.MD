@@ -347,6 +347,25 @@ git stash list
 
 ####Move from stash to working area
 
+```
+git stash apply
+```
+
+Applies the latest stash item.
+
+```
+git stash clear
+```
+
+Clears the entire stash
+
+
+```
+git stash pop
+````
+
+Copies content from the latest stash to the Working area and removes it.
+
 
 
 
