@@ -340,6 +340,14 @@ This is what git stash do
 2) Do a checkout from the repository, i.e. copies files from the repository to the index and
 the working area, thus putting git in a clean state.
 
+####List stashes
+```
+git stash list
+````
+
+####Move from stash to working area
+
+
 
 
 
