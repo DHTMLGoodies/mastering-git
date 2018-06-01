@@ -432,3 +432,4 @@ Git history commands
 * ```git show HEAD@{ "2 hours ago" }```
 * ```git blame <file>``` - shows when each line in the file was modified and by who.
 * ```git diff HEAD HEAD~2``` - the difference between current commit and 2 commits earlier.
+* ```git diff <branch1> <branch2>``` - The difference between two branches.
