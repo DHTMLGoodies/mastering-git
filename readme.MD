@@ -305,7 +305,8 @@ SUMMARY: Moving files between the areas
 5. ```git reset --hard HEAD```: from repository to index and working area.
 6. ```git reset <hash>```:  moves the branch in the repository and copies it from repository to index, but leaves the working area untouched.
 7. ```git reset --hard <hash>```: moves the branch/head in the repository to a specific commit and copies it's content to the index and the working area.
-8. ```git stash``` : moves files from the working area and index to the stash ara
+8. ```git stash``` : moves files from the working area and index to the stash area and put git in a clean state.
+9. ```git stash pop``` : moves files from the stash to the working area.
 
 ```git reset --hard``` does not accept paths. It copies from repository to the index and the working area, i.e. put the repository in a clean state. 
 
