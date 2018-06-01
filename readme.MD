@@ -319,6 +319,18 @@ git stash
 command.
 
 
+1. create new file (guacomole.txt)
+2. add it with ```git add```.
+3. Update another file "menu.txt"
+
+guacomole.txt is now in the working area and the index. The latest version
+of menu.txt is only in the working area.
+
+```
+git stash --include-untracked
+````
+
+can be used to also stash untracked files.
 
 
 
