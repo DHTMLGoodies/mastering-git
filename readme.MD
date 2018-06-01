@@ -433,3 +433,13 @@ Git history commands
 * ```git blame <file>``` - shows when each line in the file was modified and by who.
 * ```git diff HEAD HEAD~2``` - the difference between current commit and 2 commits earlier.
 * ```git diff <branch1> <branch2>``` - The difference between two branches.
+
+####git log
+
+* Very powerful git command
+* lots of options
+
+* ```git log --patch```- detailed log of changes
+* ```git log --grep tomato --oneline``` - filter the log
+* ```git log -<n> --oneline``` log latest ```n``` commits, eg. ```git log -3 --oneline```.
+* ```git log HEAD~5..HEAD^ --oneline``` - log range
