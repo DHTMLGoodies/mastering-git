@@ -292,6 +292,23 @@ To also undo our changes to the file we can do a
 git reset --hard HEAD
 ```
 
+Be careful with ```git reset --hard``` as it's one of the more
+destructive commands in git
+
+
+SUMMARY: Moving files between the areas
+
+1. ```git add <file>``` : working area to index.
+2. ```git checkout <file>``` index to working area.
+3. ```git commit``` : index to repository
+4. ```git reset HEAD <file>``` : repository to index. file is optional
+5. ```git reset --hard HEAD```: from repository to index and working area.
+6. ```git reset <hash>```:  moves the branch in the repository and copies it from repository to index, but leaves the working area untouched.
+7. ```git reset --hard <hash>```: moves the branch/head in the repository to a specific commit and copies it's content to the index and the working area.
+
+```git reset --hard``` does not accept paths. It copies from repository to the index and the working area, i.e. put the repository in a clean state. 
+
+
 
 
 
