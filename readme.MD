@@ -334,6 +334,11 @@ git stash --include-untracked
 
 can be used to also stash untracked files. The default is to not stash untracked files.
 
+This is what git stash do
+
+1) Copies data from the working area AND index to the stash
+2) Do a checkout from the repository, i.e. copies files from the repository to the index and
+the working area, thus putting git in a clean state.
 
 
 
