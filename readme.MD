@@ -425,3 +425,10 @@ Git history commands
 * ```git show <branch>```- show changes in a branch
 * ```git show HEAD```- changes in commit at HEAD
 * ```git show HEAD^```- ^ = parent commit
+* ```git show HEAD^^```- parent,parent of HEAD
+* ```git show HEAD~2```- also parent, parent of HEAD. Two commits before head
+* ```git show HEAD~3^2``` - three commits back, 2nd parent of that commit
+* ```git show HEAD@{ "1 month ago" }```
+* ```git show HEAD@{ "2 hours ago" }```
+* ```git blame <file>``` - shows when each line in the file was modified and by who.
+* ```git diff HEAD HEAD~2``` - the difference between current commit and 2 commits earlier.
