@@ -5,3 +5,5 @@ Guacomole
 * Peper
 * Jalapeno
 * Onion
+* Black Pepper
+* Tomato

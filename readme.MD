@@ -321,11 +321,11 @@ git stash
 command.
 
 
-1. create new file (guacomole.txt)
+1. create new file (guacamole.txt)
 2. add it with ```git add```.
 3. Update another file "menu.txt"
 
-guacomole.txt is now in the working area and the index. The latest version
+guacamole.txt is now in the working area and the index. The latest version
 of menu.txt is only in the working area.
 
 ```
@@ -367,6 +367,50 @@ git stash pop
 Copies content from the latest stash to the Working area and removes it.
 
 
+## Merge conflicts
 
+1. create new branch and do a checkout
 
+```
+git branch tomato
+git checkout tomato
+```
 
+2. Update guacamole.txt
+
+3. ```git add guacamole.txt```. 
+
+4. ```git commit -m "Added tomato to the recipe```. 
+
+5. ```git checkout master```
+
+6. Update guacamole.txt again
+
+7. ```git add guacamole.txt````
+
+8. ```git commit -m "Added onion````
+
+9. ```git merge tomato````
+
+will now trigger a merge conflict
+
+```
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 9 commits.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+        both modified:   guacamole.txt
+```
+
+To resolve a conflict manually:
+
+* Edit guacamole.txt and save it
+* Add it to the index with ```git add guacamole.txt```
