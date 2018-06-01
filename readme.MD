@@ -107,3 +107,82 @@ git rm -f COPYRIGHT.txt
 ```
 
 will remove the file from both the index and the working area.
+
+
+## Moving files
+Given: a clean repository with one file menu.txt
+
+```
+|-----------------------------------------------|
+| working area |   index     |    repository    |
+| menu.txt     |   menu.txt  |    menu.txt      |
+|-----------------------------------------------|
+```
+
+1. from this clean state, rename menu.txt to menu.md 
+2. do "git status"
+
+```
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    menu.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        menu.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+````
+
+The three areas now look like this:
+
+```
+|-----------------------------------------------|
+| working area |   index     |    repository    |
+| menu.md      |   menu.txt  |    menu.txt      |
+|-----------------------------------------------|
+```
+
+git has a menu.txt in it's index, but cannot find it in
+the working area, so it reports it as deleted.
+
+It sees a new file called menu.md in the working area.
+This is not in the index, nor the repository, so it marks
+it as a new untracked file.
+
+if you add both files:
+
+```
+git add menu.md
+git add menu.txt
+````
+ git status will report:
+
+ ```
+ $ git status
+On branch master
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    newfile.txt -> menu.md
+```
+
+after both files has been added, git noticed that it's the
+same file and that is has been renamed.
+
+Git automatically detects when you are removing and moving
+files.
+
+git mv is a convenience method which renames a file and
+adds it to the index.
