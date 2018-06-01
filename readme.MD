@@ -309,6 +309,15 @@ SUMMARY: Moving files between the areas
 ```git reset --hard``` does not accept paths. It copies from repository to the index and the working area, i.e. put the repository in a clean state. 
 
 
+## The stash
+the only command updating the stash is the
+
+```
+git stash
+````
+
+command.
+
 
 
 
