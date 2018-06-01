@@ -1,2 +1,4 @@
 This is my menu
 
+1. First menu item
+2. Second menu item
