@@ -186,3 +186,32 @@ files.
 
 git mv is a convenience method which renames a file and
 adds it to the index.
+
+## git reset
+
+* Confusing to many
+* To understand reset, you need to understand branches
+and be familiar with the Three main areas.
+* reset does different things in different contexts.
+
+### Commands that moves branches
+
+* commit
+* merge
+* rebase
+* pull
+
+reset is a command designed to move branches.
+
+```git reset --hard``` copies data from the repository to
+the index and the working area.
+
+```git reset --mixed``` copies data from the repository to the
+index, but leaves the working area alone. ```--mixed``` is the
+default option.
+
+```git reset --soft``` moves the branch in the repository, but
+leaves the index and repository alone.
+
+in conclusion git reset moves the current branch and optionally
+copies data from the repository to the other areas.
