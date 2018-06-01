@@ -300,7 +300,7 @@ SUMMARY: Moving files between the areas
 
 1. ```git add <file>``` : working area to index.
 2. ```git checkout <file>``` index to working area.
-3. ```git checkout HEAD <file>```repository to index and working area
+3. ```git checkout HEAD <file>```repository to index and working area (use with caution)
 3. ```git commit``` : index to repository
 4. ```git reset HEAD <file>``` : repository to index. file is optional
 5. ```git reset --hard HEAD```: from repository to index and working area.
@@ -415,3 +415,13 @@ To resolve a conflict manually:
 
 * Edit guacamole.txt and save it
 * Add it to the index with ```git add guacamole.txt```
+
+## Explore History
+
+Git history commands
+
+* ```git log --graph --decorate --oneline```
+* ```git show 33b1869``` - show changes in a commit
+* ```git show <branch>```- show changes in a branch
+* ```git show HEAD```- changes in commit at HEAD
+* ```git show HEAD^```- ^ = parent commit
