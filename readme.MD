@@ -279,9 +279,20 @@ Example 2:
 1. Update a file and add it with git add
 2. the file is now in the working area and the index
 
-To undo the "add", we can use a ```git reset --mixed``` or
-simply ```git reset``` which will copy from the repository
+To undo the "add", we can use a ```git reset --mixed HEAD``` or
+simply ```git reset HEAD``` which will copy from the repository
 to the index, but leave the working area alone.
+
+Since no hash is defined, the branch/HEAD will not move, it will only
+copy it's current data from the repository to the index, it will unstage what we staged with ```git add```.
+
+To also undo our changes to the file we can do a
+
+```
+git reset --hard HEAD
+```
+
+
 
 
 
