@@ -215,3 +215,75 @@ leaves the index and repository alone.
 
 in conclusion git reset moves the current branch and optionally
 copies data from the repository to the other areas.
+
+Example:
+```
+| Working area   |    index     |     repository   |
+| menu.txt(1)    |  menu.txt(1) |     menu.txt(1)  |
+```
+
+Update menu.txt
+
+```
+| Working area   |    index     |     repository   |
+| menu.txt(2)    |  menu.txt(1) |     menu.txt(1)  |
+```
+
+```
+git add menu.txt
+```
+
+```
+| Working area   |    index     |     repository   |
+| menu.txt(2)    |  menu.txt(2) |     menu.txt(1)  |
+```
+
+commit it:
+```
+git commit -m  "Added menu item"
+```
+
+```
+| Working area   |    index     |     repository   |
+| menu.txt(2)    |  menu.txt(q2) |     menu.txt(2)  |
+```
+
+The master branch in the repository has now moved to the new commit.
+HEAD is pointing at the master branch is moving as well.
+
+
+create strawberry.txt, add it: ```git add strawberry.txt``` and commit it ```git commit -m "strawberry recipe"```. 
+
+#### How to rollback the last two commits?
+
+```
+git log
+```
+
+which logs the last commits with a hash.
+
+to undo the last two commits do
+
+```
+git reset --hard 7ad4c2a
+````
+
+this will move the branch/HEAD back to that commit and 
+copy these files to the index and the working area.
+
+The latest two commites in the repository will eventually
+be garbage collected since no branch is pointing at them.
+
+Example 2:
+
+1. Update a file and add it with git add
+2. the file is now in the working area and the index
+
+To undo the "add", we can use a ```git reset --mixed``` or
+simply ```git reset``` which will copy from the repository
+to the index, but leave the working area alone.
+
+
+
+
+
