@@ -1,18 +1,18 @@
 # Mastering GIT
 
 The best way to learn git is to use the command line. Use ui tools
-later once you mastered the basics.
+later once you grasp the basics.
 
 ## The four areas
 
-1. The working area - file system for your project
-2. The index 
-3. The repository - the .git folder
-4. The stash
+1. The Working area - file system for your project
+2. The index, aka the Staging area.
+3. The Repository
+4. The Stash
 
 ### The two questions
 
-1. How does a specific git command move information acrosse the
+1. How does a specific git command move information across the
 four areas?
 2. How does this command change the repository?
 
@@ -35,13 +35,12 @@ HEAD
 - can only be one HEAD
 - HEAD is pointing to a branch
 
-
 ## The index
 
 - unique to Git
 - between the working area and the repository
 - also called the staging area
-- stage to staging area and commit to repository
+- git add to staging area and git commit to repository
 - data stored in .git/index (binary)
 
 ```
@@ -63,7 +62,6 @@ git diff --cached
 ````
 
 compares the index with the repository.
-
 
 ## Moving data to the right
 
@@ -298,16 +296,16 @@ destructive commands in git
 
 SUMMARY: Moving files between the areas
 
-1. ```git add <file>``` : working area to index.
-2. ```git checkout <file>``` index to working area.
-3. ```git checkout HEAD <file>```repository to index and working area (use with caution)
-3. ```git commit``` : index to repository
-4. ```git reset HEAD <file>``` : repository to index. file is optional
-5. ```git reset --hard HEAD```: from repository to index and working area.
-6. ```git reset <hash>```:  moves the branch in the repository and copies it from repository to index, but leaves the working area untouched.
-7. ```git reset --hard <hash>```: moves the branch/head in the repository to a specific commit and copies it's content to the index and the working area.
-8. ```git stash``` : moves files from the working area and index to the stash area and put git in a clean state.
-9. ```git stash pop``` : moves files from the stash to the working area.
+* ```git add <file>``` : working area to index.
+* ```git commit``` : index to repository
+* ```git checkout <file>``` index to working area.
+* ```git checkout HEAD <file>``` repository to index and working area (use with caution)
+* ```git reset HEAD <file>``` : repository to index. file is optional
+* ```git reset --hard HEAD```: from repository to index and working area.
+* ```git reset <commit hash>```:  moves the branch in the repository and copies it from repository to index, but leaves the working area untouched.
+* ```git reset --hard <commit hash>```: moves the branch/head in the repository to a specific commit and copies it's content to the index and the working area.
+* ```git stash --include-untracked``` : moves files from the working area and index to the stash area and put git in a clean state.
+*  ```git stash pop``` : moves files from the stash to the working area.
 
 ```git reset --hard``` does not accept paths. It copies from repository to the index and the working area, i.e. put the repository in a clean state. 
 
@@ -320,7 +318,6 @@ git stash
 ````
 
 command.
-
 
 1. create new file (guacamole.txt)
 2. add it with ```git add```.
@@ -378,19 +375,12 @@ git checkout tomato
 ```
 
 2. Update guacamole.txt
-
 3. ```git add guacamole.txt```. 
-
 4. ```git commit -m "Added tomato to the recipe```. 
-
 5. ```git checkout master```
-
 6. Update guacamole.txt again
-
 7. ```git add guacamole.txt````
-
 8. ```git commit -m "Added onion````
-
 9. ```git merge tomato````
 
 will now trigger a merge conflict
