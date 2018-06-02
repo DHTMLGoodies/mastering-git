@@ -443,3 +443,13 @@ Git history commands
 * ```git log --grep tomato --oneline``` - filter the log
 * ```git log -<n> --oneline``` log latest ```n``` commits, eg. ```git log -3 --oneline```.
 * ```git log HEAD~5..HEAD^ --oneline``` - log range
+* ```git log <fromBranch>..<toBranch> --oneline
+
+
+## Updating the history
+
+* NEVER rebase shared commits, only local
+* git rebase changes history
+* The Golden rule: Never change shared history
+
+### Changing the lastest commit
