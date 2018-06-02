@@ -453,3 +453,44 @@ Git history commands
 * The Golden rule: Never change shared history
 
 ### Changing the lastest commit
+
+1. Change menu.txt and add "Caesar salad to the list"
+2. Stage it
+3. Commit it
+
+After commit, you realize that you didn't finish the work and need more
+in that commit.
+
+1. Create Caesar-Salad.txt 
+2. Stage it with ```git add Caesar-Salad.txt```.
+
+How to add Caesar-Salad.txt to the latest commit?
+
+```git commit --amend```
+
+or 
+
+```git commit --amend -m "Commit message"```
+
+This will update the lastest commit with the content from the Index/staging area, i.e. the Caesar-Salad.txt file.
+
+What git is doing "under the hood" is this:
+
+before git ammend, the history may look like this
+
+```
+HEAD-> <commit>
+         |
+       <parent commit>
+```
+
+Git do not change the commit, instead it creates a new commit which
+also refers to the parent commit
+
+```
+<commit>    <new commit>   <- HEAD
+    |          /
+    <parent commmit>
+```
+
+The old commit wil eventually be garbage collected.
