@@ -493,3 +493,27 @@ Given:
 - Two commits ago, menu was updated with Tikka Masala
 - The Tikka Masala file is missing
 
+To update history
+
+```
+git rebase --interactive origin/master
+```
+
+meaning update history since origin master. Updating can be done by editing
+the file.
+
+You can use the interactive rebase to change your commits. If you commit often in
+order to rollback, you can use the interactive rebase before you commit to squash
+smaller commits together.
+
+The rebase interacative brings out an editor like this:
+
+
+
+Other rebase commands
+
+```
+git rebase --abort
+git rebase --continue
+```
+
