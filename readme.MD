@@ -488,3 +488,8 @@ The old commit wil eventually be garbage collected.
 ## Update an old commit
 
 * Remember the golden rule, never change shared history.
+
+Given:
+- Two commits ago, menu was updated with Tikka Masala
+- The Tikka Masala file is missing
+
