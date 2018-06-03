@@ -508,7 +508,50 @@ smaller commits together.
 
 The rebase interacative brings out an editor like this:
 
+````
+pick bb523c6 Add tikka masala
+pick 3ed7bd5 update readme
+pick df9df13 Update old commits
+pick 2cb0393 readme - change history
+pick 10b741a Changing history - continued
+pick 409ff11 Changing history - updated
 
+# Rebase 051422c..409ff11 onto 051422c (6 commands)
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+# d, drop = remove commit
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+```
+with the newest at the bottom. If we want to merge the latest three commits, we can do that by :
+
+```
+pick 2cb0393 readme - change history
+squash 10b741a Changing history - continued
+squash 409ff11 Changing history - updated
+```
+Then save and close the file
+
+```
+$ git log --graph --decorate --oneline
+* c57fecd (HEAD -> master) readme - change history
+* df9df13 Update old commits
+* 3ed7bd5 update readme
+* bb523c6 Add tikka masala
+```
+
+As you can see, the commits has been squashed. Since commits are immutable, you can see
+that instead of updating the commit, Git has created a new commit(see the hash) which
+contains all the three commits.
 
 Other rebase commands
 
