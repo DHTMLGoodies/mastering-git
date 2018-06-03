@@ -4,3 +4,4 @@ This is my menu
 2. Second menu item
 3. Guacomole menu
 4. Caesar Salad
+5. Tikka masala
