@@ -484,3 +484,7 @@ also refers to the parent commit
 ```
 
 The old commit wil eventually be garbage collected.
+
+## Update an old commit
+
+* Remember the golden rule, never change shared history.
