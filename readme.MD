@@ -636,3 +636,41 @@ Example:
 
 How to cherry pick commit Ce into the second branch?
 
+#### Dictator and Lieutenants Model
+- Main Project Maintained by Dictator
+- Sub Projects maintained by Lieutenants
+- Lieutenants sends pull request to Dictator
+- Other users send pull requests to Lieutenants
+
+### Branching Models
+
+- A Stable Branch is a branch which contains a working version of the project 
+( no bugs, all tests runs green).
+
+- An Unstable branch does not have these guarantees.
+
+#### Feature Branches/Topic Branches
+
+- Developer A works on feature A, Developer B works on feaure B
+- One model is that both pushes changes to the main branch,
+- An alternative is to have one branch per feature, branch "feature A" and branch "feature B". A Merge with the master branch is done when the feature is implemented.
+
+#### Cherry Picking
+
+Example:
+2 branches
+
+```
+----Ca ---- Cb ----- Cc ----- Cd ----- Ce  (branchA)
+\
+ \- Cf------Cg ------Ch ----- Ci (branchB)
+```
+
+How to cherry pick commit Ce into the second branch?
+
+```
+git checkout branchB
+git cherry-pick Ce
+```
+
+Another option is to create a third branch(branchC) and put the commit cE in that branch. Then both branchA and branchB can do a merge from branchC.
