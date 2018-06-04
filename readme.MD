@@ -560,3 +560,10 @@ git rebase --abort
 git rebase --continue
 ```
 
+### The reflog
+
+```
+git reflog HEAD
+```
+
+
