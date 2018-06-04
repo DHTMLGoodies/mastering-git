@@ -564,6 +564,15 @@ git rebase --continue
 
 ```
 git reflog HEAD
+git reflog refs/headsq/master
 ```
 
+## Reverting commits
 
+The safe way to revert commits is by using ```git revert```. This method can also be used on shared history. What ```git revert```does when you use ```git revert```is to create a new commit which is is opposite/reverse of the commit you want to revert, example: if you added two lines of code, this commit will remove these two lines of code, and if you added a file, this commit will remove that file.
+
+```
+git log --graph --decorate --oneline
+```
+
+Be careful when you revert merge commits.
