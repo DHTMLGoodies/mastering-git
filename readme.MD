@@ -532,3 +532,25 @@ git merge will result in a new commit based on Cb and Cc
 git pull
 ```
 is short for fetch and merge.
+
+# Detached HEAD
+
+Useful when experimenting with code
+
+```
+git log --graph --decorate --oneline
+git checkout <hash>
+git add <file>
+git commit -m "first commit"
+git add <file2>
+git commit -m "second code"
+```
+
+If we want to use the code after the experiment is done, we can do
+
+```
+git branch <nameOfBranch>
+git checkout master
+git merge <nameOfBranch>
+git branch -d <nameOfBranch>
+```
