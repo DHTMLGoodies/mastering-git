@@ -1,18 +1,18 @@
 # Mastering GIT
 
 The best way to learn git is to use the command line. Use ui tools
-later once you grasp the basics.
+later once you mastered the basics.
 
 ## The four areas
 
-1. The Working area - file system for your project
-2. The index, aka the Staging area.
-3. The Repository
-4. The Stash
+1. The working area - file system for your project
+2. The index 
+3. The repository - the .git folder
+4. The stash
 
 ### The two questions
 
-1. How does a specific git command move information across the
+1. How does a specific git command move information acrosse the
 four areas?
 2. How does this command change the repository?
 
@@ -35,12 +35,13 @@ HEAD
 - can only be one HEAD
 - HEAD is pointing to a branch
 
+
 ## The index
 
 - unique to Git
 - between the working area and the repository
 - also called the staging area
-- git add to staging area and git commit to repository
+- stage to staging area and commit to repository
 - data stored in .git/index (binary)
 
 ```
@@ -62,6 +63,7 @@ git diff --cached
 ````
 
 compares the index with the repository.
+
 
 ## Moving data to the right
 
@@ -296,16 +298,15 @@ destructive commands in git
 
 SUMMARY: Moving files between the areas
 
-* ```git add <file>``` : working area to index.
-* ```git commit``` : index to repository
-* ```git checkout <file>``` index to working area.
-* ```git checkout HEAD <file>``` repository to index and working area (use with caution)
-* ```git reset HEAD <file>``` : repository to index. file is optional
-* ```git reset --hard HEAD```: from repository to index and working area.
-* ```git reset <commit hash>```:  moves the branch in the repository and copies it from repository to index, but leaves the working area untouched.
-* ```git reset --hard <commit hash>```: moves the branch/head in the repository to a specific commit and copies it's content to the index and the working area.
-* ```git stash --include-untracked``` : moves files from the working area and index to the stash area and put git in a clean state.
-*  ```git stash pop``` : moves files from the stash to the working area.
+1. ```git add <file>``` : working area to index.
+2. ```git checkout <file>``` index to working area.
+3. ```git commit``` : index to repository
+4. ```git reset HEAD <file>``` : repository to index. file is optional
+5. ```git reset --hard HEAD```: from repository to index and working area.
+6. ```git reset <hash>```:  moves the branch in the repository and copies it from repository to index, but leaves the working area untouched.
+7. ```git reset --hard <hash>```: moves the branch/head in the repository to a specific commit and copies it's content to the index and the working area.
+8. ```git stash``` : moves files from the working area and index to the stash area and put git in a clean state.
+9. ```git stash pop``` : moves files from the stash to the working area.
 
 ```git reset --hard``` does not accept paths. It copies from repository to the index and the working area, i.e. put the repository in a clean state. 
 
@@ -318,6 +319,7 @@ git stash
 ````
 
 command.
+
 
 1. create new file (guacamole.txt)
 2. add it with ```git add```.
@@ -375,266 +377,15 @@ git checkout tomato
 ```
 
 2. Update guacamole.txt
+
 3. ```git add guacamole.txt```. 
+
 4. ```git commit -m "Added tomato to the recipe```. 
+
 5. ```git checkout master```
+
 6. Update guacamole.txt again
-7. ```git add guacamole.txt````
-8. ```git commit -m "Added onion````
-9. ```git merge tomato````
 
-will now trigger a merge conflict
-
-```
-$ git status
-On branch master
-Your branch is ahead of 'origin/master' by 9 commits.
-  (use "git push" to publish your local commits)
-
-You have unmerged paths.
-  (fix conflicts and run "git commit")
-  (use "git merge --abort" to abort the merge)
-
-Unmerged paths:
-  (use "git add <file>..." to mark resolution)
-
-        both modified:   guacamole.txt
-```
-
-To resolve a conflict manually:
-
-* Edit guacamole.txt and save it
-* Add it to the index with ```git add guacamole.txt```
-
-## Explore History
-
-Git history commands
-
-* ```git log --graph --decorate --oneline```
-* ```git show 33b1869``` - show changes in a commit
-* ```git show <branch>```- show changes in a branch
-* ```git show HEAD```- changes in commit at HEAD
-* ```git show HEAD^```- ^ = parent commit
-* ```git show HEAD^^```- parent,parent of HEAD
-* ```git show HEAD~2```- also parent, parent of HEAD. Two commits before head
-* ```git show HEAD~3^2``` - three commits back, 2nd parent of that commit
-* ```git show HEAD@{ "1 month ago" }```
-* ```git show HEAD@{ "2 hours ago" }```
-* ```git blame <file>``` - shows when each line in the file was modified and by who.
-* ```git diff HEAD HEAD~2``` - the difference between current commit and 2 commits earlier.
-* ```git diff <branch1> <branch2>``` - The difference between two branches.
-
-####git log
-
-* Very powerful git command
-* lots of options
-
-* ```git log --patch```- detailed log of changes
-* ```git log --grep tomato --oneline``` - filter the log
-* ```git log -<n> --oneline``` log latest ```n``` commits, eg. ```git log -3 --oneline```.
-* ```git log HEAD~5..HEAD^ --oneline``` - log range
-* ```git log <fromBranch>..<toBranch> --oneline
-
-
-## Updating the history
-
-* NEVER rebase shared commits, only local
-* git rebase changes history
-* The Golden rule: Never change shared history
-
-### Changing the lastest commit
-
-1. Change menu.txt and add "Caesar salad to the list"
-2. Stage it
-3. Commit it
-
-After commit, you realize that you didn't finish the work and need more
-in that commit.
-
-1. Create Caesar-Salad.txt 
-2. Stage it with ```git add Caesar-Salad.txt```.
-
-How to add Caesar-Salad.txt to the latest commit?
-
-```git commit --amend```
-
-or 
-
-```git commit --amend -m "Commit message"```
-
-This will update the lastest commit with the content from the Index/staging area, i.e. the Caesar-Salad.txt file.
-
-What git is doing "under the hood" is this:
-
-before git ammend, the history may look like this
-
-```
-HEAD-> <commit>
-         |
-       <parent commit>
-```
-
-Git do not change the commit, instead it creates a new commit which
-also refers to the parent commit
-
-```
-<commit>    <new commit>   <- HEAD
-    |          /
-    <parent commmit>
-```
-
-The old commit wil eventually be garbage collected.
-
-## Update an old commit
-
-* Remember the golden rule, never change shared history.
-
-Given:
-- Two commits ago, menu was updated with Tikka Masala
-- The Tikka Masala file is missing
-
-To update history
-
-```
-git rebase --interactive origin/master
-```
-
-meaning update history since origin master. Updating can be done by editing
-the file.
-
-You can use the interactive rebase to change your commits. If you commit often in
-order to rollback, you can use the interactive rebase before you commit to squash
-smaller commits together.
-
-The rebase interacative brings out an editor like this:
- 
-```
-pick bb523c6 Add tikka masala
-pick 3ed7bd5 update readme
-pick df9df13 Update old commits
-pick 2cb0393 readme - change history
-pick 10b741a Changing history - continued
-pick 409ff11 Changing history - updated
-
-# Rebase 051422c..409ff11 onto 051422c (6 commands)
-#
-# Commands:
-# p, pick = use commit
-# r, reword = use commit, but edit the commit message
-# e, edit = use commit, but stop for amending
-# s, squash = use commit, but meld into previous commit
-# f, fixup = like "squash", but discard this commit's log message
-# x, exec = run command (the rest of the line) using shell
-# d, drop = remove commit
-#
-# These lines can be re-ordered; they are executed from top to bottom.
-#
-# If you remove a line here THAT COMMIT WILL BE LOST.
-#
-```
-
-with the newest at the bottom. If we want to merge the latest three commits, we can do that by :
-
-```
-pick 2cb0393 readme - change history
-squash 10b741a Changing history - continued
-squash 409ff11 Changing history - updated
-```
-Then save and close the file
-
-```
-$ git log --graph --decorate --oneline
-* c57fecd (HEAD -> master) readme - change history
-* df9df13 Update old commits
-* 3ed7bd5 update readme
-* bb523c6 Add tikka masala
-```
-
-As you can see, the commits has been squashed. Since commits are immutable, you can see
-that instead of updating the commit, Git has created a new commit(see the hash) which
-contains all the three commits.
-
-Other rebase commands
-
-```
-git rebase --abort
-git rebase --continue
-```
-
-### The reflog
-
-```
-git reflog HEAD
-git reflog refs/headsq/master
-```
-
-## Reverting commits
-
-The safe way to revert commits is by using ```git revert```. This method can also be used on shared history. What ```git revert```does when you use ```git revert```is to create a new commit which is is opposite/reverse of the commit you want to revert, example: if you added two lines of code, this commit will remove these two lines of code, and if you added a file, this commit will remove that file.
-
-```
-git log --graph --decorate --oneline
-```
-
-Be careful when you revert merge commits.
-
-
-## Workflows
-
-* Distribution Model
-* Branching Models
-* Constraints
-
-### Distribution models
-
-Consider these Patterns, not Recipes. Many use a combination of these:
-
-#### Peer to Peer
-- Person to Person
-- No repository is more important than the others
-- Local repositories only
-
-#### Centralized Model
-- "Blessed" Repository you push and pull from (origin)
-- Similar to SubVersion
-
-#### Pull Request Model
-- Central Repository which only a few can push to
-- A Person(Contributor) with read access make some changes to the repo
-- A pull request is sent from this person to the Maintain
-- Most popular model for Open Source development
-
-#### Dictator and Lieutenants Model
-- Main Project Maintained by Dictator
-- Sub Projects maintained by Lieutenants
-- Lieutenants sends pull request to Dictator
-- Other users send pull requests to Lieutenants
-
-### Branching Models
-
-- A Stable Branch is a branch which contains a working version of the project 
-( no bugs, all tests runs green).
-
-- An Unstable branch does not have these guarantees.
-
-#### Feature Branches/Topic Branches
-
-- Developer A works on feature A, Developer B works on feaure B
-- One model is that both pushes changes to the main branch,
-- An alternative is to have one branch per feature, branch "feature A" and branch "feature B". A Merge with the master branch is done when the feature is implemented.
-
-#### Cherry Picking
-
-Example:
-2 branches
-
-```
-----Ca ---- Cb ----- Cc ----- Cd ----- Ce
-\
- \- Cf------Cg ------Ch ----- Ci
-```
-
-How to cherry pick commit Ce into the second branch?
 
 #### Dictator and Lieutenants Model
 - Main Project Maintained by Dictator
@@ -674,3 +425,110 @@ git cherry-pick Ce
 ```
 
 Another option is to create a third branch(branchC) and put the commit cE in that branch. Then both branchA and branchB can do a merge from branchC.
+
+Example 2 - HotFix branches pattern
+
+* Two branches: "versionAbc" and "master". 
+* We want a bugfix to be applied to both branches
+
+```
+git branch hotfix
+git checkout hotfix
+```
+
+Fix the bug, add and commit
+
+```
+git checkout versionA
+git merge hotfix
+```
+
+and for the other branch
+
+```
+git checkout master
+git merge hotfix
+```
+
+## Constraints
+
+* Rebase or Merge ? - Example: After creating a hotfix branch, should we merge
+it into the master branch or Rebase?
+* Don't push to red builds?
+* Squash Commits before pushing?
+
+## GitFlow
+ref: https://datasift.github.io/gitflow/IntroducingGitFlow.html
+
+* Centralized with Peer to Peer elements
+* Branches grouped into Stable Branches and Unstable Branches
+* Unstable branches contain a develop branch and feature branches
+* The stable branches contains the master branch, hotfix branches and release branches.
+* Own repository with Git custom commands for this workflow.
+* Does not fit everyone
+
+## Grow a Workflow
+
+* Don't design a workflow beforehand.
+* Try to grow a workflow
+
+## Commands
+
+* git show-ref <branch> - A branch is just a reference to a commmit
+
+## Git push
+
+```
+    Local                           |        Remote
+    Ca (master and origin/master)   |  Ca (master)
+```
+
+
+A local commit will move the master branch
+
+```
+    Local                           |        Remote
+    Ca (origin/master)              |  Ca (master)
+            |
+    Cb (master)
+```
+
+A git push will update the remote repository and move the origin/master
+pointer
+
+
+```
+    Local                           |        Remote
+    Ca                              |  Ca
+     |                              |   |
+    Cb (master and origin/master)   |  Cb (master)
+```
+
+Situation 2: We have commited Cb and want to push, but someone
+has pushed another commit Cc and we have a conflict
+
+
+```
+    Local                           |        Remote
+    Ca (origin/master)              |  Ca
+     |                              |   |
+    Cb (master)                     |  Cc (master)
+```
+
+Two options
+
+1) Not recommended: A forced push (git push -f). This will replace commit Cc on the server with our Commit(Cb)
+2) Recommended: Fix the conflict on our machine before we push.
+
+```
+git fetch
+git merge origin/master
+```
+
+git fetch will update the origin/master pointer.
+git merge will result in a new commit based on Cb and Cc
+
+```
+git pull
+```
+is short for fetch and merge.
