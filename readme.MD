@@ -507,8 +507,8 @@ order to rollback, you can use the interactive rebase before you commit to squas
 smaller commits together.
 
 The rebase interacative brings out an editor like this:
-
-````
+ 
+```
 pick bb523c6 Add tikka masala
 pick 3ed7bd5 update readme
 pick df9df13 Update old commits
@@ -532,6 +532,7 @@ pick 409ff11 Changing history - updated
 # If you remove a line here THAT COMMIT WILL BE LOST.
 #
 ```
+
 with the newest at the bottom. If we want to merge the latest three commits, we can do that by :
 
 ```
@@ -576,3 +577,35 @@ git log --graph --decorate --oneline
 ```
 
 Be careful when you revert merge commits.
+
+
+## Workflows
+
+* Distribution Model
+* Branching Models
+* Constraints
+
+### Distribution models
+
+Consider these Patterns, not Recipes. Many use a combination of these:
+
+#### Peer to Peer
+- Person to Person
+- No repository is more important than the others
+- Local repositories only
+
+#### Centralized Model
+- "Blessed" Repository you push and pull from (origin)
+- Similar to SubVersion
+
+#### Pull Request Model
+- Central Repository which only a few can push to
+- A Person(Contributor) with read access make some changes to the repo
+- A pull request is sent from this person to the Maintain
+- Most popular model for Open Source development
+
+#### Dictator and Lieutenants Model
+- Main Project Maintained by Dictator
+- Sub Projects maintained by Lieutenants
+- Lieutenants sends pull request to Dictator
+- Other users send pull requests to Lieutenants
