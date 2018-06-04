@@ -1,7 +1,0 @@
-This is my menu
-
-1. First menu item
-2. Second menu item
-3. Guacomole menu
-4. Caesar Salad
-5. Tikka masala
